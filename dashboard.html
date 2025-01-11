@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">Dashboard</div>
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#transactions">Transaksi</a></li>
+        <li><a href="#users">Pengguna</a></li>
+        <li><a href="#settings">Pengaturan</a></li>
+      </ul>
+      <button id="logout-btn">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <div class="user-info">
+          <span>Selamat datang, <strong>Admin</strong></span>
+          <button id="profile-btn">Profil</button>
+        </div>
+        <div class="notifications">
+          <button id="notification-btn">Notifikasi <span class="badge" id="notification-count">0</span></button>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="statistics">
+        <div class="stat-card">
+          <h3>Pengguna Aktif</h3>
+          <p id="active-users">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Penghasilan Bulan Ini</h3>
+          <p id="total-income">Rp 0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Pengeluaran Bulan Ini</h3>
+          <p id="total-expenses">Rp 0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Duit Masuk</h3>
+          <p id="total-income-entry">Rp 0</p>
+        </div>
+      </div>
+
+      <!-- QR Code for Top Up -->
+      <div class="top-up">
+        <h3>Top Up Pembayaran</h3>
+        <button id="generate-qrcode">Generate QR Code</button>
+        <div id="qrcode-container"></div>
+      </div>
+
+      <!-- Graphs -->
+      <div class="graphs">
+        <canvas id="pieChart"></canvas>
+      </div>
+
+      <!-- User Management -->
+      <div class="user-management">
+        <h3>Manajemen Pengguna</h3>
+        <input type="text" id="search-users" placeholder="Cari pengguna..." />
+        <table id="user-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be populated here via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Profile Modal -->
+      <div id="profile-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" id="close-profile">×</span>
+          <h2>Profil Pengguna</h2>
+          <form id="profile-form">
+            <label for="profile-name">Nama:</label>
+            <input type="text" id="profile-name" value="Admin" />
+            <label for="profile-email">Email:</label>
+            <input type="email" id="profile-email" value="admin@example.com" />
+            <button type="submit" class="btn-save">Simpan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode.js"></script> <!-- Library untuk QR Code -->
+  <script src="brayy.js"></script>
+</body>
+</html>
