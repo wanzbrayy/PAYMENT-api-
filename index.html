@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      input {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+        font-size: 2rem;
+        color: #444;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .input-field {
+        width: 100%;
+        background-color: #f0f0f0;
+        margin: 10px 0;
+        height: 50px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .input-field input {
+        width: 100%;
+        background: none;
+        outline: none;
+        border: none;
+        line-height: 1;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .input-field i {
+        margin-right: 10px;
+        color: #aaa;
+      }
+
+      .btn {
+        width: 100%;
+        background-color: #5995fd;
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 25px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #4d84e2;
+      }
+
+      .social-text {
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid #333;
+        color: #333;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .social-icon:hover {
+        color: #4481eb;
+        border-color: #4481eb;
+      }
+
+      /* Spinner Styles */
+      .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #5995fd;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Tambahan untuk link Sign Up */
+      .signup-link {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9rem;
+      }
+
+      .signup-link a {
+        color: #5995fd;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .signup-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2 class="title">Sign In</h2>
+        <form id="sign-in-form" onsubmit="handleSignIn(event)">
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="login-email" placeholder="Email" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="Password" required />
+          </div>
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+
+        <p class="social-text">Or Sign in with social platforms</p>
+        <div class="social-media">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <!-- Tambahkan link ke halaman signup -->
+        <p class="signup-link">
+          Don't have an account? <a href="signup.html">Sign Up</a>
+        </p>
+
+        <div id="spinner" class="spinner"></div>
+      </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script>
+      function handleSignIn(event) {
+        event.preventDefault(); // Mencegah form dikirim
+
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+
+        // Tampilkan spinner
+        document.getElementById("spinner").style.display = "block";
+
+        // Proses login di sini (mengirim data ke server)
+        console.log('Sign In:', email, password);
+
+        // Simulasi login sukses setelah 2 detik
+        setTimeout(() => {
+          // Sembunyikan spinner
+          document.getElementById("spinner").style.display = "none";
+          // Redirect ke dashboard setelah login berhasil
+          window.location.href = "dashboard.html"; 
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
